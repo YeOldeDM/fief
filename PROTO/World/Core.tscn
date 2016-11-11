@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://World/Core.gd" type="Script" id=1]
+[ext_resource path="res://Town/town_marker_0.png" type="Texture" id=2]
+[ext_resource path="res://resources/labor.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "\nextends TextureButton\n\n#############################\n#\tDRAG-N-DROP FUNCTION\t#\nfunc get_drag_data(pos):\n\tvar drag_itm = TextureFrame.new()\n\tif get_parent().produces:\n\t\tdrag_itm.set_texture(get_parent().get(get_parent().produces))\n\tset_drag_preview(drag_itm)\n\treturn self\n\nfunc can_drop_data(pos,data):\n\tif \'importing\' in data.get_parent() and data.get_parent() != self:\n\t\treturn true\n\nfunc drop_data(pos,data):\n\t#data = town dragged from\n\t#self = town dragged to\n\t\n\t# Import product from data town\n\tget_parent().import_from(data.get_parent())\n\t\n\t# Cancel any exporting from other towns\n\tdata.get_parent().set_export(self.get_parent())\n\t\n\tget_parent().get_parent().set_lane(data.get_parent(),self.get_parent())\n\t#get_parent().get_node(\'Info/box\').update_info()\n\n\tget_owner().update()\n##############################\n\n\n"
+
+[node name="Core" type="Position2D"]
+
+transform/pos = Vector2( 90, 70 )
+script/script = ExtResource( 1 )
+name = "YeOldeTowne"
+produces = "LABOR"
+
+[node name="Button" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -32.0
+margin/top = -32.0
+margin/right = 32.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 2 )
+script/script = SubResource( 1 )
+
+[node name="Product" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+[node name="Name" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -40.0
+margin/top = 40.0
+margin/right = 47.0
+margin/bottom = 54.0
+text = "YeOldeTowne"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+

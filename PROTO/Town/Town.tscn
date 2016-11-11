@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://Town/Town.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Town/town_marker_2.png" type="Texture" id=3]
+[ext_resource path="res://resources/food.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 24
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 22
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 2 )
+
+[node name="Town" type="Node2D"]
+
+transform/pos = Vector2( 212.536, 197.462 )
+transform/scale = Vector2( 2, 2 )
+script/script = ExtResource( 1 )
+town_name = "SomeName"
+level = 2
+produced_resource = "FOOD"
+
+[node name="Name" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -111.0
+margin/top = -54.0
+margin/right = 111.0
+margin/bottom = -29.0
+custom_fonts/font = SubResource( 2 )
+text = "SomeName"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Button" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -32.0
+margin/top = -32.0
+margin/right = 32.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+
+[node name="production" type="Sprite" parent="."]
+
+texture = ExtResource( 4 )
+
+[node name="Level" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 6.0
+margin/top = -27.0
+margin/right = 30.0
+margin/bottom = -2.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "2"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

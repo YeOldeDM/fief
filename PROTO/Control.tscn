@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "\nextends Control\n\n# member variables here, example:\n# var a=2\n# var b=\"textvar\"\n\nfunc _ready():\n\t# Called every time the node is added to the scene.\n\t# Initialization here\n\tpass\n\n\n\n\nfunc _on_PanelContainer_mouse_enter():\n\tprint(1)\n\n\nfunc _on_PanelContainer1_mouse_enter():\n\tprint(2)\n"
+
+[node name="Control" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 402.0
+margin/bottom = 405.0
+script/script = SubResource( 1 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 427.0
+margin/top = 226.0
+margin/right = 712.0
+margin/bottom = 451.0
+
+[node name="PanelContainer1" type="PanelContainer" parent="PanelContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 278.0
+margin/bottom = 218.0
+
+[connection signal="mouse_enter" from="PanelContainer" to="." method="_on_PanelContainer_mouse_enter"]
+
+[connection signal="mouse_enter" from="PanelContainer/PanelContainer1" to="." method="_on_PanelContainer1_mouse_enter"]
+
+

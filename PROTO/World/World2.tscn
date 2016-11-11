@@ -1,0 +1,445 @@
+[gd_scene load_steps=14 format=1]
+
+[ext_resource path="res://World/dummy_map.png" type="Texture" id=1]
+[ext_resource path="res://Fief/Fief.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Town/TownCore.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Viewer.gd" type="Script" id=4]
+[ext_resource path="res://9frame1.png" type="Texture" id=5]
+[ext_resource path="res://gui/TownGui.gd" type="Script" id=6]
+[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/Timeless-Bold.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="StyleBoxTexture" id=1]
+
+content_margin/left = 16.0
+content_margin/right = 16.0
+content_margin/top = 16.0
+content_margin/bottom = 8.0
+texture = ExtResource( 5 )
+margin/left = 16.0
+margin/right = 16.0
+margin/top = 24.0
+margin/bottom = 16.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 32
+font/use_mipmaps = false
+font/use_filter = true
+font/font = ExtResource( 7 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="DynamicFont" id=4]
+
+font/size = 32
+font/use_mipmaps = false
+font/use_filter = true
+font/font = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+
+font/size = 16
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 8 )
+
+[node name="World" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="BG" type="Node2D" parent="."]
+
+z/z = -2
+z/relative = false
+
+[node name="Board" type="TextureFrame" parent="BG"]
+
+rect/scale = Vector2( 8, 8 )
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 674.0
+margin/bottom = 674.0
+texture = ExtResource( 1 )
+modulate = Color( 0.659607, 0.831805, 0.835938, 1 )
+expand = true
+stretch_mode = 0
+
+[node name="Fiefs" type="Control" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="Fief" parent="Fiefs" instance=ExtResource( 2 )]
+
+margin/left = 464.0
+margin/top = 640.0
+margin/right = 464.0
+margin/bottom = 640.0
+
+[node name="TownCore" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 298, 394 )
+produces = "FOOD"
+
+[node name="TownCore1" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 666, 74 )
+produces = "FOOD"
+
+[node name="TownCore2" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 170, -390 )
+produces = "LABOR"
+
+[node name="TownCore3" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -38, 202 )
+produces = "LABOR"
+
+[node name="TownCore4" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 378, -102 )
+produces = "LUMBER"
+
+[node name="TownCore5" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -214, -294 )
+produces = "MASONRY"
+
+[node name="TownCore6" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 186, -246 )
+produces = "FOOD"
+
+[node name="Fief1" parent="Fiefs" instance=ExtResource( 2 )]
+
+margin/left = 1616.0
+margin/top = 1008.0
+margin/right = 1616.0
+margin/bottom = 1008.0
+
+[node name="Fief2" parent="Fiefs" instance=ExtResource( 2 )]
+
+margin/left = 288.0
+margin/top = 1664.0
+margin/right = 288.0
+margin/bottom = 1664.0
+
+[node name="Fief3" parent="Fiefs" instance=ExtResource( 2 )]
+
+margin/left = 1520.0
+margin/top = 176.0
+margin/right = 1520.0
+margin/bottom = 176.0
+
+[node name="Viewer" type="Position2D" parent="."]
+
+script/script = ExtResource( 4 )
+
+[node name="Camera" type="Camera2D" parent="Viewer"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = false
+drag_margin/v_enabled = false
+smoothing/enable = true
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+layer = 2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="frame" type="Control" parent="UI"]
+
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="Info" type="PanelContainer" parent="UI/frame"]
+
+editor/display_folded = true
+visibility/self_opacity = 0.7
+anchor/top = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 280.0
+margin/right = 352.0
+margin/bottom = 24.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="box" type="VBoxContainer" parent="UI/frame/Info"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 16.0
+margin/top = 16.0
+margin/right = 336.0
+margin/bottom = 248.0
+alignment = 0
+script/script = ExtResource( 6 )
+
+[node name="Name" type="HBoxContainer" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 320.0
+margin/bottom = 33.0
+alignment = 0
+
+[node name="NameLabel" type="Label" parent="UI/frame/Info/box/Name"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 255.0
+margin/bottom = 33.0
+custom_fonts/font = SubResource( 2 )
+text = "Town Name"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="NameEdit" type="LineEdit" parent="UI/frame/Info/box/Name/NameLabel"]
+
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="RenameButton" type="Button" parent="UI/frame/Info/box/Name"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 259.0
+margin/top = 0.0
+margin/right = 320.0
+margin/bottom = 33.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "rename"
+flat = false
+
+[node name="level" type="Label" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 37.0
+margin/right = 320.0
+margin/bottom = 55.0
+custom_fonts/font = SubResource( 5 )
+text = "Level X"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="population" type="Label" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 59.0
+margin/right = 320.0
+margin/bottom = 77.0
+custom_fonts/font = SubResource( 5 )
+text = "Pop.: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="produces" type="Label" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 81.0
+margin/right = 320.0
+margin/bottom = 95.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="imports" type="Label" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 99.0
+margin/right = 320.0
+margin/bottom = 113.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="exports" type="Label" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 117.0
+margin/right = 320.0
+margin/bottom = 131.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="NeedsLabel" type="Label" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 135.0
+margin/right = 320.0
+margin/bottom = 153.0
+custom_fonts/font = SubResource( 5 )
+text = "Resources needed for level X"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Needs" type="GridContainer" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 157.0
+margin/right = 320.0
+margin/bottom = 157.0
+columns = 8
+
+[node name="HSeparator" type="HSeparator" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 161.0
+margin/right = 320.0
+margin/bottom = 164.0
+
+[node name="AvailableLabel" type="Label" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 168.0
+margin/right = 320.0
+margin/bottom = 186.0
+custom_fonts/font = SubResource( 5 )
+text = "Resources Available:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Available" type="GridContainer" parent="UI/frame/Info/box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 190.0
+margin/right = 320.0
+margin/bottom = 190.0
+columns = 8
+
+[connection signal="text_entered" from="UI/frame/Info/box/Name/NameLabel/NameEdit" to="UI/frame/Info/box" method="_on_NameEdit_text_entered"]
+
+[connection signal="pressed" from="UI/frame/Info/box/Name/RenameButton" to="UI/frame/Info/box" method="_on_RenameButton_pressed"]
+
+
