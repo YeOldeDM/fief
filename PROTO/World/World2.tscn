@@ -1,21 +1,23 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://World/dummy_map.png" type="Texture" id=1]
-[ext_resource path="res://Fief/Fief.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Town/TownCore.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/Viewer.gd" type="Script" id=4]
-[ext_resource path="res://9frame1.png" type="Texture" id=5]
-[ext_resource path="res://gui/TownGui.gd" type="Script" id=6]
-[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://fonts/Timeless-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://World/FiefManager.gd" type="Script" id=2]
+[ext_resource path="res://Fief/Fief.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Town/TownCore.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Viewer.gd" type="Script" id=5]
+[ext_resource path="res://9frame1.png" type="Texture" id=6]
+[ext_resource path="res://gui/TownGui.gd" type="Script" id=7]
+[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://fonts/Timeless-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://gui/GameTime.gd" type="Script" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
 content_margin/left = 16.0
 content_margin/right = 16.0
-content_margin/top = 16.0
+content_margin/top = 8.0
 content_margin/bottom = 8.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 margin/left = 16.0
 margin/right = 16.0
 margin/top = 24.0
@@ -31,7 +33,7 @@ draw_center = true
 font/size = 32
 font/use_mipmaps = false
 font/use_filter = true
-font/font = ExtResource( 7 )
+font/font = ExtResource( 8 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -45,14 +47,21 @@ content_margin/bottom = -1.0
 font/size = 32
 font/use_mipmaps = false
 font/use_filter = true
-font/font = ExtResource( 7 )
+font/font = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=5]
 
 font/size = 16
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 8 )
+font/font = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=6]
+
+font/size = 18
+font/use_mipmaps = false
+font/use_filter = true
+font/font = ExtResource( 9 )
 
 [node name="World" type="Control"]
 
@@ -96,64 +105,66 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
+script/script = ExtResource( 2 )
 
-[node name="Fief" parent="Fiefs" instance=ExtResource( 2 )]
+[node name="Fief" parent="Fiefs" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 margin/left = 464.0
 margin/top = 640.0
 margin/right = 464.0
 margin/bottom = 640.0
 
-[node name="TownCore" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+[node name="TownCore" parent="Fiefs/Fief" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 298, 394 )
 produces = "FOOD"
 
-[node name="TownCore1" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+[node name="TownCore1" parent="Fiefs/Fief" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 666, 74 )
 produces = "FOOD"
 
-[node name="TownCore2" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+[node name="TownCore2" parent="Fiefs/Fief" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 170, -390 )
 produces = "LABOR"
 
-[node name="TownCore3" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+[node name="TownCore3" parent="Fiefs/Fief" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -38, 202 )
 produces = "LABOR"
 
-[node name="TownCore4" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+[node name="TownCore4" parent="Fiefs/Fief" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 378, -102 )
 produces = "LUMBER"
 
-[node name="TownCore5" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+[node name="TownCore5" parent="Fiefs/Fief" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -214, -294 )
 produces = "MASONRY"
 
-[node name="TownCore6" parent="Fiefs/Fief" instance=ExtResource( 3 )]
+[node name="TownCore6" parent="Fiefs/Fief" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 186, -246 )
 produces = "FOOD"
 
-[node name="Fief1" parent="Fiefs" instance=ExtResource( 2 )]
+[node name="Fief1" parent="Fiefs" instance=ExtResource( 3 )]
 
 margin/left = 1616.0
 margin/top = 1008.0
 margin/right = 1616.0
 margin/bottom = 1008.0
 
-[node name="Fief2" parent="Fiefs" instance=ExtResource( 2 )]
+[node name="Fief2" parent="Fiefs" instance=ExtResource( 3 )]
 
 margin/left = 288.0
 margin/top = 1664.0
 margin/right = 288.0
 margin/bottom = 1664.0
 
-[node name="Fief3" parent="Fiefs" instance=ExtResource( 2 )]
+[node name="Fief3" parent="Fiefs" instance=ExtResource( 3 )]
 
 margin/left = 1520.0
 margin/top = 176.0
@@ -162,7 +173,8 @@ margin/bottom = 176.0
 
 [node name="Viewer" type="Position2D" parent="."]
 
-script/script = ExtResource( 4 )
+editor/display_folded = true
+script/script = ExtResource( 5 )
 
 [node name="Camera" type="Camera2D" parent="Viewer"]
 
@@ -185,6 +197,7 @@ drag_margin/bottom = 0.2
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -192,7 +205,6 @@ scale = Vector2( 1, 1 )
 
 [node name="frame" type="Control" parent="UI"]
 
-visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = true
@@ -227,11 +239,11 @@ focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 16.0
-margin/top = 16.0
+margin/top = 8.0
 margin/right = 336.0
 margin/bottom = 248.0
 alignment = 0
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
 
 [node name="Name" type="HBoxContainer" parent="UI/frame/Info/box"]
 
@@ -438,8 +450,106 @@ margin/right = 320.0
 margin/bottom = 190.0
 columns = 8
 
+[node name="ToolPanel" type="PanelContainer" parent="UI/frame"]
+
+visibility/self_opacity = 0.7
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 64.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="box" type="HBoxContainer" parent="UI/frame/ToolPanel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 16.0
+margin/top = 8.0
+margin/right = 784.0
+margin/bottom = 56.0
+alignment = 0
+
+[node name="Time" type="VBoxContainer" parent="UI/frame/ToolPanel/box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 191.0
+margin/bottom = 48.0
+alignment = 0
+script/script = ExtResource( 10 )
+
+[node name="Bar" type="ProgressBar" parent="UI/frame/ToolPanel/box/Time"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 191.0
+margin/bottom = 16.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+
+[node name="Label" type="Label" parent="UI/frame/ToolPanel/box/Time"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 20.0
+margin/right = 191.0
+margin/bottom = 41.0
+custom_fonts/font = SubResource( 6 )
+text = "Date"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Timer" type="Timer" parent="UI/frame/ToolPanel/box/Time"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/frame/ToolPanel/box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+size_flags/stretch_ratio = 3.0
+margin/left = 195.0
+margin/top = 0.0
+margin/right = 768.0
+margin/bottom = 48.0
+alignment = 0
+
+[node name="Players" type="Node" parent="."]
+
 [connection signal="text_entered" from="UI/frame/Info/box/Name/NameLabel/NameEdit" to="UI/frame/Info/box" method="_on_NameEdit_text_entered"]
 
 [connection signal="pressed" from="UI/frame/Info/box/Name/RenameButton" to="UI/frame/Info/box" method="_on_RenameButton_pressed"]
+
+[connection signal="timeout" from="UI/frame/ToolPanel/box/Time/Timer" to="UI/frame/ToolPanel/box/Time" method="_on_Timer_timeout"]
 
 

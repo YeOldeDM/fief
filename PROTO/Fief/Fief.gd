@@ -20,7 +20,7 @@ signal barony_set(town,barony)
 #	PARAMETERS	#
 
 # Fief Name
-export(String) var name = "Fief" setget _set_name
+export(String) var name = "RAND" setget _set_name
 
 
 
@@ -71,11 +71,6 @@ func _set_barony(value):
 
 #################
 #	PUBLIC FUNC	#
-func set_name(value):
-	set('name', value)
-
-func get_name():
-	return get('name')
 
 func add_town(town):
 	assert not town in towns
@@ -110,12 +105,12 @@ func get_barony():
 
 
 func _ready():
+	pass
+	#set_name(NameGen.GetName())
 	
-	set_name(NameGen.GetName())
-	
-	for node in get_children():
-		if node extends Position2D:
-			if node.name == 'YeOldeTowne':
-				node.set('name', NameGen.GetName())
-
-			add_town(node)
+#	for node in get_children():
+#		if node extends Position2D:
+#			if node.name == 'YeOldeTowne':
+#				node.set('name', NameGen.GetName())
+#
+#			add_town(node)

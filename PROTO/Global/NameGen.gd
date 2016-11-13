@@ -11,8 +11,6 @@ var tit = [
 	'old',
 	'saint',
 	'great',
-	'the Big',
-	'the Small',
 	]
 
 var pre = [
@@ -48,12 +46,14 @@ var pre = [
 	'sem',
 	'vest',
 	'rem',
+	'ren',
 	'sco',
 	'ere',
 	'eire',
 	'ire',
 	'mos',
 	'tie',
+	'war',
 	]
 
 var suff = [

@@ -5,8 +5,8 @@
 [ext_resource path="res://lane_fg.png" type="Texture" id=3]
 [ext_resource path="res://Town/town_marker_0.png" type="Texture" id=4]
 [ext_resource path="res://Town/TownButton.gd" type="Script" id=5]
-[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://resources/metalworks.png" type="Texture" id=7]
+[ext_resource path="res://resources/metalworks.png" type="Texture" id=6]
+[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Town/ResourceRef.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
@@ -26,20 +26,20 @@ tracks/0/keys = { "times":FloatArray( 0, 0.5, 1 ), "transitions":FloatArray( 1, 
 font/size = 24
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 6 )
+font/font = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]
 
 font/size = 20
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 6 )
+font/font = ExtResource( 7 )
 
 [node name="TownCore" type="Position2D"]
 
 transform/pos = Vector2( 90, 70 )
 script/script = ExtResource( 1 )
-name = "YeOldeTowne"
+name = "RAND"
 team_color = Color( 1, 1, 1, 1 )
 level = 0
 produces = "METALWORKS"
@@ -98,6 +98,10 @@ shortcut = null
 textures/normal = ExtResource( 4 )
 script/script = ExtResource( 5 )
 
+[node name="Product" type="Sprite" parent="."]
+
+texture = ExtResource( 6 )
+
 [node name="Name" type="Label" parent="."]
 
 focus/ignore_mouse = true
@@ -111,8 +115,8 @@ margin/bottom = -17.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 1
-text = "YeOldeTowne"
+custom_constants/shadow_as_outline = 2
+text = "RAND"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -131,15 +135,11 @@ margin/bottom = 5.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 1
+custom_constants/shadow_as_outline = 2
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[node name="Product" type="Sprite" parent="."]
-
-texture = ExtResource( 7 )
 
 [node name="ResourceRef" type="Node" parent="."]
 

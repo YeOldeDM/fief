@@ -41,7 +41,7 @@ var upgrade_requirements = [
 #	MEMBERS	#
 
 # Town Name
-export (String) var name = "YeOldeTowne" setget _set_name
+export (String) var name = "RAND" setget _set_name
 
 # Team Color (testing)
 export (Color, RGB) var team_color = Color(1,1,1) setget _set_team_color

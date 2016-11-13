@@ -72,7 +72,7 @@ func _on_town_import_changed():
 	var import_txt = ""
 	for key in town.importing:
 		import_txt += " "+key.name+": "+str(key.get_producing_resource().name)
-	get_node('imports').set_text("Importing from: "+import_txt)
+	#get_node('imports').set_text("Importing from: "+import_txt)
 	draw_needed_resources()
 
 func _on_town_export_changed():

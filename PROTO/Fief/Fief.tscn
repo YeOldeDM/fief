@@ -22,6 +22,7 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
+name = "RAND"
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -43,7 +44,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.933594, 0.841197, 0.419388, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
-text = "Fief"
+text = "RAND"
 valign = 2
 percent_visible = 1.0
 lines_skipped = 0
