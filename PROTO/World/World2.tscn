@@ -1,23 +1,25 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://World/dummy_map.png" type="Texture" id=1]
 [ext_resource path="res://World/FiefManager.gd" type="Script" id=2]
 [ext_resource path="res://Fief/Fief.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Town/TownCore.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Viewer.gd" type="Script" id=5]
-[ext_resource path="res://9frame1.png" type="Texture" id=6]
-[ext_resource path="res://gui/TownGui.gd" type="Script" id=7]
-[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://fonts/Timeless-Bold.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://gui/GameTime.gd" type="Script" id=10]
+[ext_resource path="res://gui/UI.gd" type="Script" id=6]
+[ext_resource path="res://9frame1.png" type="Texture" id=7]
+[ext_resource path="res://gui/TownGui.gd" type="Script" id=8]
+[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://fonts/Timeless-Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://gui/GameTime.gd" type="Script" id=11]
+[ext_resource path="res://gui/UIMenu.gd" type="Script" id=12]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=8]
 
 content_margin/left = 16.0
 content_margin/right = 16.0
 content_margin/top = 8.0
 content_margin/bottom = 8.0
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 margin/left = 16.0
 margin/right = 16.0
 margin/top = 24.0
@@ -28,37 +30,61 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=9]
 
 font/size = 32
 font/use_mipmaps = false
 font/use_filter = true
-font/font = ExtResource( 8 )
+font/font = ExtResource( 9 )
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=10]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=11]
 
 font/size = 32
 font/use_mipmaps = false
 font/use_filter = true
-font/font = ExtResource( 8 )
+font/font = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=12]
 
 font/size = 16
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 9 )
+font/font = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=13]
 
 font/size = 18
+font/use_mipmaps = false
+font/use_filter = true
+font/font = ExtResource( 10 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+
+content_margin/left = 16.0
+content_margin/right = 16.0
+content_margin/top = 8.0
+content_margin/bottom = 8.0
+texture = ExtResource( 7 )
+margin/left = 16.0
+margin/right = 16.0
+margin/top = 24.0
+margin/bottom = 16.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="DynamicFont" id=14]
+
+font/size = 32
 font/use_mipmaps = false
 font/use_filter = true
 font/font = ExtResource( 9 )
@@ -197,14 +223,15 @@ drag_margin/bottom = 0.2
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
+script/script = ExtResource( 6 )
 
 [node name="frame" type="Control" parent="UI"]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = true
@@ -230,7 +257,7 @@ margin/left = 0.0
 margin/top = 280.0
 margin/right = 352.0
 margin/bottom = 24.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 8 )
 
 [node name="box" type="VBoxContainer" parent="UI/frame/Info"]
 
@@ -243,7 +270,7 @@ margin/top = 8.0
 margin/right = 336.0
 margin/bottom = 248.0
 alignment = 0
-script/script = ExtResource( 7 )
+script/script = ExtResource( 8 )
 
 [node name="Name" type="HBoxContainer" parent="UI/frame/Info/box"]
 
@@ -267,7 +294,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 255.0
 margin/bottom = 33.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 9 )
 text = "Town Name"
 percent_visible = 1.0
 lines_skipped = 0
@@ -286,8 +313,8 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 placeholder/alpha = 0.6
 focus_mode = 2
 caret/caret_blink = false
@@ -319,7 +346,7 @@ margin/left = 0.0
 margin/top = 37.0
 margin/right = 320.0
 margin/bottom = 55.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 12 )
 text = "Level X"
 percent_visible = 1.0
 lines_skipped = 0
@@ -335,7 +362,7 @@ margin/left = 0.0
 margin/top = 59.0
 margin/right = 320.0
 margin/bottom = 77.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 12 )
 text = "Pop.: "
 percent_visible = 1.0
 lines_skipped = 0
@@ -393,7 +420,7 @@ margin/left = 0.0
 margin/top = 135.0
 margin/right = 320.0
 margin/bottom = 153.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 12 )
 text = "Resources needed for level X"
 percent_visible = 1.0
 lines_skipped = 0
@@ -432,7 +459,7 @@ margin/left = 0.0
 margin/top = 168.0
 margin/right = 320.0
 margin/bottom = 186.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 12 )
 text = "Resources Available:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -452,6 +479,7 @@ columns = 8
 
 [node name="ToolPanel" type="PanelContainer" parent="UI/frame"]
 
+editor/display_folded = true
 visibility/self_opacity = 0.7
 anchor/right = 1
 focus/ignore_mouse = false
@@ -462,7 +490,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 64.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 8 )
 
 [node name="box" type="HBoxContainer" parent="UI/frame/ToolPanel"]
 
@@ -478,16 +506,17 @@ alignment = 0
 
 [node name="Time" type="VBoxContainer" parent="UI/frame/ToolPanel/box"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 191.0
+margin/right = 108.0
 margin/bottom = 48.0
 alignment = 0
-script/script = ExtResource( 10 )
+script/script = ExtResource( 11 )
 
 [node name="Bar" type="ProgressBar" parent="UI/frame/ToolPanel/box/Time"]
 
@@ -497,7 +526,7 @@ size_flags/horizontal = 3
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 191.0
+margin/right = 108.0
 margin/bottom = 16.0
 range/min = 0.0
 range/max = 100.0
@@ -516,9 +545,9 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 20.0
-margin/right = 191.0
+margin/right = 108.0
 margin/bottom = 41.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 13 )
 text = "Date"
 percent_visible = 1.0
 lines_skipped = 0
@@ -538,11 +567,134 @@ focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 2
 size_flags/stretch_ratio = 3.0
-margin/left = 195.0
+margin/left = 112.0
+margin/top = 0.0
+margin/right = 437.0
+margin/bottom = 48.0
+alignment = 0
+
+[node name="buttons" type="HBoxContainer" parent="UI/frame/ToolPanel/box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+size_flags/stretch_ratio = 3.0
+margin/left = 441.0
 margin/top = 0.0
 margin/right = 768.0
 margin/bottom = 48.0
+alignment = 2
+
+[node name="MenuButton" type="Button" parent="UI/frame/ToolPanel/box/buttons"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 278.0
+margin/top = 0.0
+margin/right = 327.0
+margin/bottom = 48.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "menu"
+flat = false
+
+[node name="Menu" type="PopupPanel" parent="UI"]
+
+anchor/left = 3
+anchor/right = 3
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 100.0
+margin/top = 100.0
+margin/right = -130.0
+margin/bottom = 50.0
+custom_styles/panel = SubResource( 7 )
+popup/exclusive = true
+script/script = ExtResource( 12 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menu"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 alignment = 0
+
+[node name="Title" type="Label" parent="UI/Menu/VBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 230.0
+margin/bottom = 33.0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.636719, 0.636719, 0.636719, 1 )
+text = "MENU"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="options" type="VBoxContainer" parent="UI/Menu/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 37.0
+margin/right = 230.0
+margin/bottom = 450.0
+alignment = 1
+
+[node name="Resume" type="Button" parent="UI/Menu/VBoxContainer/options"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 184.0
+margin/right = 230.0
+margin/bottom = 204.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Resume"
+flat = false
+
+[node name="Exit" type="Button" parent="UI/Menu/VBoxContainer/options"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 208.0
+margin/right = 230.0
+margin/bottom = 228.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Exit"
+flat = false
 
 [node name="Players" type="Node" parent="."]
 
@@ -551,5 +703,11 @@ alignment = 0
 [connection signal="pressed" from="UI/frame/Info/box/Name/RenameButton" to="UI/frame/Info/box" method="_on_RenameButton_pressed"]
 
 [connection signal="timeout" from="UI/frame/ToolPanel/box/Time/Timer" to="UI/frame/ToolPanel/box/Time" method="_on_Timer_timeout"]
+
+[connection signal="pressed" from="UI/frame/ToolPanel/box/buttons/MenuButton" to="UI" method="_on_MenuButton_pressed"]
+
+[connection signal="pressed" from="UI/Menu/VBoxContainer/options/Resume" to="UI/Menu" method="_on_Resume_pressed"]
+
+[connection signal="pressed" from="UI/Menu/VBoxContainer/options/Exit" to="UI/Menu" method="_on_Exit_pressed"]
 
 

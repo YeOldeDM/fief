@@ -115,14 +115,6 @@ func draw_border(pos1,pos2):
 
 func _ready():
 	clear()
-	set_process_input(true)
-
-
-func _input(event):
-	if event.type == InputEvent.KEY:
-		if event.scancode == KEY_SPACE and event.pressed:
-			if !FULL:
-				grow()
 
 
 func _on_Timer_timeout():

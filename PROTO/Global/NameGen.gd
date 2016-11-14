@@ -16,14 +16,20 @@ var tit = [
 var pre = [
 	'aud',
 	'ab',
+	'nor',
+	'norn',
 	'wast',
+	'wasten',
 	'dun',
+	'duen',
 	'est',
-	'high',
+	'esten',
+	'hig',
 	'pel',
 	'hi',
 	'low',
 	'lo',
+	'loen',
 	'hro',
 	'ho',
 	'la',
@@ -141,9 +147,9 @@ func GetName():
 		while pref2 == prefix:
 			pref2 = rand_choice(pre)
 		prefix += pref2
-		if randf() < 0.2:
+		if randf() < 0.1 and prefix.length() <= 4:
 			prefix += rand_choice(pre)
-	if randf() < 0.7 or prefix.length() <= 4:
+	if randf() < 0.7 or prefix.length() <= 6:
 		suffix = rand_choice(suff)
 	if randf() < 0.1:
 		extra = rand_choice(ext)
