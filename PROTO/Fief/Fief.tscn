@@ -26,12 +26,14 @@ name = "RAND"
 
 [node name="Sprite" type="Sprite" parent="."]
 
+visibility/visible = false
 visibility/self_opacity = 0.25
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 
 visibility/self_opacity = 0.2
+visibility/blend_mode = 1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -41,9 +43,7 @@ margin/top = -160.0
 margin/right = 355.0
 margin/bottom = -31.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.933594, 0.841197, 0.419388, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 1
+custom_colors/font_color = Color( 0.810581, 0.890625, 0.56012, 1 )
 text = "RAND"
 valign = 2
 percent_visible = 1.0

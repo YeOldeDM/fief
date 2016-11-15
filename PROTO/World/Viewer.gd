@@ -1,9 +1,26 @@
 
 extends Position2D
 
+#################################
+#	VIEWER						#
+#								#
+#	Controls functionality of	#
+#	the viewport camera			#
+#								#
+#################################
+
+# CONSTANTS
+const ZOOM_FACTOR = 20
+const MIN_ZOOM = 1.0
+const MAX_ZOOM = 10.0
+const MIN_DRAG_SPEED = 5
+
+# SHORTCUTS
 onready var Cam = get_node('Camera')
 
-var target_zoom = 20.0
+
+# MEMBERS
+var target_zoom = 1.0
 var camspeed = 500
 var drag_camspeed = 20
 
@@ -11,9 +28,12 @@ var wheel_state = 0
 var drag_state = 0
 var drag_origin = null
 
+
+# PRIVATE FUNCS
 func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
+
 
 func _input(event):
 	if event.type == InputEvent.MOUSE_BUTTON:
@@ -29,6 +49,7 @@ func _input(event):
 			wheel_state = 1
 		elif event.button_index == BUTTON_WHEEL_DOWN:
 			wheel_state = 2
+
 
 func _fixed_process(delta):
 	
@@ -48,7 +69,7 @@ func _fixed_process(delta):
 	var pos = get_pos()
 	
 	var M = camspeed*delta*Cam.get_zoom().x
-	var dM = drag_camspeed*delta*max(Cam.get_zoom().x,5.0)
+	var dM = drag_camspeed*delta*max(Cam.get_zoom().x,MIN_DRAG_SPEED)
 	
 	
 	if UP and !DOWN:
@@ -70,11 +91,11 @@ func _fixed_process(delta):
 	
 	var new_zoom = target_zoom
 	if ZOOMIN or wheel_state == 1:
-		new_zoom -= 20*delta
+		new_zoom -= ZOOM_FACTOR*delta
 
 	if ZOOMOUT or wheel_state == 2:
-		new_zoom += 20*delta
-	new_zoom = clamp(new_zoom,1.0,20.0)
+		new_zoom += ZOOM_FACTOR*delta
+	new_zoom = clamp(new_zoom,MIN_ZOOM,MAX_ZOOM)
 	if new_zoom != camspeed:
 		target_zoom = new_zoom
 	

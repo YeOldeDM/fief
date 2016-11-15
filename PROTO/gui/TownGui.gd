@@ -1,8 +1,32 @@
 
 extends VBoxContainer
 
+#############################
+#	TOWN GUI				#
+#							#
+#	Displays relevant info	#
+#	on a select Town		#
+#							#
+#############################
+
+#################
+#	SHORTCUTS	#
+onready var UI = get_node('../../../')
+
+
+
+#################
+#	MEMBERS		#
 var town = null setget _set_town
 
+
+
+
+
+
+
+#################
+#	PRIVATE		#
 func _ready():
 	pass
 
@@ -28,7 +52,7 @@ func _set_town(value):
 	
 	# set it
 	town = value
-	
+	UI.get_node('CurrentTownMarker').target = town
 	# connect signals to new town
 	town.connect("name_changed", self, "_on_town_name_changed")
 	town.connect("level_changed", self, "_on_town_level_changed")

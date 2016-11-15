@@ -37,6 +37,7 @@ font/font = ExtResource( 7 )
 
 [node name="TownCore" type="Position2D"]
 
+visibility/behind_parent = true
 transform/pos = Vector2( 90, 70 )
 script/script = ExtResource( 1 )
 name = "RAND"

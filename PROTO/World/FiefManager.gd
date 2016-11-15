@@ -14,4 +14,3 @@ func _ready():
 					if town.name == 'RAND':
 						town.set('name', NameGen.GetName())
 
-

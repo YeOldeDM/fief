@@ -1,25 +1,29 @@
-[gd_scene load_steps=21 format=1]
+[gd_scene load_steps=26 format=1]
 
-[ext_resource path="res://World/dummy_map.png" type="Texture" id=1]
-[ext_resource path="res://World/FiefManager.gd" type="Script" id=2]
-[ext_resource path="res://Fief/Fief.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Town/TownCore.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Viewer.gd" type="Script" id=5]
-[ext_resource path="res://gui/UI.gd" type="Script" id=6]
-[ext_resource path="res://9frame1.png" type="Texture" id=7]
-[ext_resource path="res://gui/TownGui.gd" type="Script" id=8]
-[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://fonts/Timeless-Bold.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://gui/GameTime.gd" type="Script" id=11]
-[ext_resource path="res://gui/UIMenu.gd" type="Script" id=12]
+[ext_resource path="res://World/World2.gd" type="Script" id=1]
+[ext_resource path="res://World/dummy_map.png" type="Texture" id=2]
+[ext_resource path="res://World/FiefManager.gd" type="Script" id=3]
+[ext_resource path="res://Fief/Fief.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Town/TownCore.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Viewer.gd" type="Script" id=6]
+[ext_resource path="res://gui/UI.gd" type="Script" id=7]
+[ext_resource path="res://9frame1.png" type="Texture" id=8]
+[ext_resource path="res://gui/TownGui.gd" type="Script" id=9]
+[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://fonts/Timeless-Bold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://gui/GameTime.gd" type="Script" id=12]
+[ext_resource path="res://gui/UIMenu.gd" type="Script" id=13]
+[ext_resource path="res://ring.png" type="Texture" id=14]
+[ext_resource path="res://gui/CurrentTownMarker.gd" type="Script" id=15]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=16]
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=1]
 
 content_margin/left = 16.0
 content_margin/right = 16.0
 content_margin/top = 8.0
 content_margin/bottom = 8.0
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 margin/left = 16.0
 margin/right = 16.0
 margin/top = 24.0
@@ -30,40 +34,40 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=2]
 
 font/size = 32
 font/use_mipmaps = false
 font/use_filter = true
-font/font = ExtResource( 9 )
+font/font = ExtResource( 10 )
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=4]
 
 font/size = 32
 font/use_mipmaps = false
 font/use_filter = true
-font/font = ExtResource( 9 )
+font/font = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=5]
 
 font/size = 16
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 10 )
+font/font = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=6]
 
 font/size = 18
 font/use_mipmaps = false
 font/use_filter = true
-font/font = ExtResource( 10 )
+font/font = ExtResource( 11 )
 
 [sub_resource type="StyleBoxTexture" id=7]
 
@@ -71,7 +75,7 @@ content_margin/left = 16.0
 content_margin/right = 16.0
 content_margin/top = 8.0
 content_margin/bottom = 8.0
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 margin/left = 16.0
 margin/right = 16.0
 margin/top = 24.0
@@ -82,12 +86,24 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=8]
 
 font/size = 32
 font/use_mipmaps = false
 font/use_filter = true
-font/font = ExtResource( 9 )
+font/font = ExtResource( 10 )
+
+[sub_resource type="Animation" id=9]
+
+resource/name = "pulse"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/scale")
+tracks/0/interp = 2
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ] }
 
 [node name="World" type="Control"]
 
@@ -99,9 +115,11 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
+script/script = ExtResource( 1 )
 
 [node name="BG" type="Node2D" parent="."]
 
+editor/display_folded = true
 z/z = -2
 z/relative = false
 
@@ -116,13 +134,14 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 674.0
 margin/bottom = 674.0
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 modulate = Color( 0.659607, 0.831805, 0.835938, 1 )
 expand = true
 stretch_mode = 0
 
 [node name="Fiefs" type="Control" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -131,9 +150,9 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-script/script = ExtResource( 2 )
+script/script = ExtResource( 3 )
 
-[node name="Fief" parent="Fiefs" instance=ExtResource( 3 )]
+[node name="Fief" parent="Fiefs" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 margin/left = 464.0
@@ -141,56 +160,56 @@ margin/top = 640.0
 margin/right = 464.0
 margin/bottom = 640.0
 
-[node name="TownCore" parent="Fiefs/Fief" instance=ExtResource( 4 )]
+[node name="TownCore" parent="Fiefs/Fief" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 298, 394 )
+transform/pos = Vector2( 298, 396 )
 produces = "FOOD"
 
-[node name="TownCore1" parent="Fiefs/Fief" instance=ExtResource( 4 )]
+[node name="TownCore1" parent="Fiefs/Fief" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 666, 74 )
 produces = "FOOD"
 
-[node name="TownCore2" parent="Fiefs/Fief" instance=ExtResource( 4 )]
+[node name="TownCore2" parent="Fiefs/Fief" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 170, -390 )
 produces = "LABOR"
 
-[node name="TownCore3" parent="Fiefs/Fief" instance=ExtResource( 4 )]
+[node name="TownCore3" parent="Fiefs/Fief" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -38, 202 )
 produces = "LABOR"
 
-[node name="TownCore4" parent="Fiefs/Fief" instance=ExtResource( 4 )]
+[node name="TownCore4" parent="Fiefs/Fief" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 378, -102 )
+transform/pos = Vector2( 36, -80 )
 produces = "LUMBER"
 
-[node name="TownCore5" parent="Fiefs/Fief" instance=ExtResource( 4 )]
+[node name="TownCore5" parent="Fiefs/Fief" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -214, -294 )
 produces = "MASONRY"
 
-[node name="TownCore6" parent="Fiefs/Fief" instance=ExtResource( 4 )]
+[node name="TownCore6" parent="Fiefs/Fief" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 186, -246 )
 produces = "FOOD"
 
-[node name="Fief1" parent="Fiefs" instance=ExtResource( 3 )]
+[node name="Fief1" parent="Fiefs" instance=ExtResource( 4 )]
 
-margin/left = 1616.0
-margin/top = 1008.0
-margin/right = 1616.0
-margin/bottom = 1008.0
+margin/left = 1760.0
+margin/top = 920.0
+margin/right = 1760.0
+margin/bottom = 920.0
 
-[node name="Fief2" parent="Fiefs" instance=ExtResource( 3 )]
+[node name="Fief2" parent="Fiefs" instance=ExtResource( 4 )]
 
 margin/left = 288.0
 margin/top = 1664.0
 margin/right = 288.0
 margin/bottom = 1664.0
 
-[node name="Fief3" parent="Fiefs" instance=ExtResource( 3 )]
+[node name="Fief3" parent="Fiefs" instance=ExtResource( 4 )]
 
 margin/left = 1520.0
 margin/top = 176.0
@@ -200,7 +219,7 @@ margin/bottom = 176.0
 [node name="Viewer" type="Position2D" parent="."]
 
 editor/display_folded = true
-script/script = ExtResource( 5 )
+script/script = ExtResource( 6 )
 
 [node name="Camera" type="Camera2D" parent="Viewer"]
 
@@ -223,15 +242,15 @@ drag_margin/bottom = 0.2
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
 
 [node name="frame" type="Control" parent="UI"]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = true
@@ -245,7 +264,6 @@ margin/bottom = 0.0
 
 [node name="Info" type="PanelContainer" parent="UI/frame"]
 
-editor/display_folded = true
 visibility/self_opacity = 0.7
 anchor/top = 1
 anchor/bottom = 1
@@ -257,7 +275,7 @@ margin/left = 0.0
 margin/top = 280.0
 margin/right = 352.0
 margin/bottom = 24.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="box" type="VBoxContainer" parent="UI/frame/Info"]
 
@@ -270,7 +288,7 @@ margin/top = 8.0
 margin/right = 336.0
 margin/bottom = 248.0
 alignment = 0
-script/script = ExtResource( 8 )
+script/script = ExtResource( 9 )
 
 [node name="Name" type="HBoxContainer" parent="UI/frame/Info/box"]
 
@@ -294,7 +312,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 255.0
 margin/bottom = 33.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 2 )
 text = "Town Name"
 percent_visible = 1.0
 lines_skipped = 0
@@ -313,8 +331,8 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
-custom_styles/normal = SubResource( 10 )
-custom_fonts/font = SubResource( 11 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 placeholder/alpha = 0.6
 focus_mode = 2
 caret/caret_blink = false
@@ -346,7 +364,7 @@ margin/left = 0.0
 margin/top = 37.0
 margin/right = 320.0
 margin/bottom = 55.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 5 )
 text = "Level X"
 percent_visible = 1.0
 lines_skipped = 0
@@ -362,7 +380,7 @@ margin/left = 0.0
 margin/top = 59.0
 margin/right = 320.0
 margin/bottom = 77.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 5 )
 text = "Pop.: "
 percent_visible = 1.0
 lines_skipped = 0
@@ -420,7 +438,7 @@ margin/left = 0.0
 margin/top = 135.0
 margin/right = 320.0
 margin/bottom = 153.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 5 )
 text = "Resources needed for level X"
 percent_visible = 1.0
 lines_skipped = 0
@@ -459,7 +477,7 @@ margin/left = 0.0
 margin/top = 168.0
 margin/right = 320.0
 margin/bottom = 186.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 5 )
 text = "Resources Available:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -490,7 +508,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 64.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="box" type="HBoxContainer" parent="UI/frame/ToolPanel"]
 
@@ -516,7 +534,7 @@ margin/top = 0.0
 margin/right = 108.0
 margin/bottom = 48.0
 alignment = 0
-script/script = ExtResource( 11 )
+script/script = ExtResource( 12 )
 
 [node name="Bar" type="ProgressBar" parent="UI/frame/ToolPanel/box/Time"]
 
@@ -547,7 +565,7 @@ margin/left = 0.0
 margin/top = 20.0
 margin/right = 108.0
 margin/bottom = 41.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 6 )
 text = "Date"
 percent_visible = 1.0
 lines_skipped = 0
@@ -604,6 +622,8 @@ flat = false
 
 [node name="Menu" type="PopupPanel" parent="UI"]
 
+editor/display_folded = true
+visibility/visible = false
 anchor/left = 3
 anchor/right = 3
 anchor/bottom = 1
@@ -617,7 +637,7 @@ margin/right = -130.0
 margin/bottom = 50.0
 custom_styles/panel = SubResource( 7 )
 popup/exclusive = true
-script/script = ExtResource( 12 )
+script/script = ExtResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Menu"]
 
@@ -643,7 +663,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 230.0
 margin/bottom = 33.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.636719, 0.636719, 0.636719, 1 )
 text = "MENU"
 align = 1
@@ -696,7 +716,30 @@ shortcut = null
 text = "Exit"
 flat = false
 
+[node name="CurrentTownMarker" type="Sprite" parent="UI"]
+
+visibility/self_opacity = 0.5
+visibility/blend_mode = 1
+transform/scale = Vector2( 0.892656, 0.892656 )
+texture = ExtResource( 14 )
+script/script = ExtResource( 15 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/CurrentTownMarker"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/pulse = SubResource( 9 )
+playback/active = true
+playback/speed = 0.5
+blend_times = [  ]
+autoplay = "pulse"
+
 [node name="Players" type="Node" parent="."]
+
+[node name="Player 1" parent="Players" instance=ExtResource( 16 )]
+
+player_color = Color( 0.976563, 0.430167, 0.190735, 1 )
 
 [connection signal="text_entered" from="UI/frame/Info/box/Name/NameLabel/NameEdit" to="UI/frame/Info/box" method="_on_NameEdit_text_entered"]
 

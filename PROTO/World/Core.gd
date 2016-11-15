@@ -2,8 +2,14 @@
 extends Position2D
 tool
 
+#################
+#	SHORTCUTS	#
 onready var UI = get_node('/root/World/UI/frame/Info/box')
 
+
+
+#################
+#	CONSTANTS	#
 const FOOD = 'food.png'
 const LABOR = 'labor.png'
 const FORESTRY = 'forestry.png'
@@ -13,6 +19,16 @@ const ORE = 'ore.png'
 const LUMBER = 'lumber.png'
 const MASONRY = 'masonry.png'
 const METALWORKS = 'metalworks.png'
+
+const upgrade_requirements = [
+		[{'special':'food_source'}, {'special': 'labor_source'}],
+		[{'special':'food_source'}, {'tier':1}],
+		[{'tier':1}, {'tier':2}],
+		[{'special':'labor_source'}, {'tier':2}, {'tier':3}],
+		[{'tier':1}, {'tier':2}, {'tier':3}, {'tier':4}]
+		]
+
+
 
 #############
 #	SIGNALS	#
@@ -28,17 +44,12 @@ signal import_changed()
 signal export_changed()
 
 
-var upgrade_requirements = [
-		[{'special':'food_source'}, {'special': 'labor_source'}],
-		[{'special':'food_source'}, {'tier':1}],
-		[{'tier':1}, {'tier':2}],
-		[{'special':'labor_source'}, {'tier':2}, {'tier':3}],
-		[{'tier':1}, {'tier':2}, {'tier':3}, {'tier':4}]
-		]
+
+
 
 
 #############
-#	MEMBERS	#
+#	PARAMS	#
 
 # Town Name
 export (String) var name = "RAND" setget _set_name
@@ -56,6 +67,9 @@ export (String,\
 	) var produces = "FOOD" setget _set_produces
 
 
+#############
+#	MEMBERS	#
+
 # Importing from towns  dict:{town:resource}
 var importing = []
 
@@ -70,6 +84,10 @@ var max_pop = 10 setget _set_max_pop
 
 # Seconds it takes to gain 1 population
 var pop_growth_time = 1.25 setget _set_pop_growth_time
+
+var claimant = null setget _set_claimant
+
+
 
 
 
@@ -166,6 +184,10 @@ func _set_button(value):
 	if img:
 		if has_node('Button'):
 			get_node('Button').set_normal_texture(img)
+
+func _set_claimant(who):
+	claimant = who
+	set('team_color', claimant.player_color)
 ################
 
 
@@ -299,6 +321,9 @@ func check_for_level_change():
 
 ##################
 
+
+
+
 #############################
 #	IMPORT/EXPORT FUNCTION	#
 
@@ -388,7 +413,6 @@ func reset_lane():
 #########################
 #	SIGNAL CALLBACKS	#
 func _on_Button_pressed():
-	print("CLICK!")
 	UI.set('town',self)
 
 
