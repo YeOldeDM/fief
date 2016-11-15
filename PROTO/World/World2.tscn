@@ -141,7 +141,6 @@ stretch_mode = 0
 
 [node name="Fiefs" type="Control" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -201,6 +200,45 @@ margin/left = 1760.0
 margin/top = 920.0
 margin/right = 1760.0
 margin/bottom = 920.0
+
+[node name="TownCore" parent="Fiefs/Fief1" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -210, -30 )
+produces = "FOOD"
+
+[node name="TownCore1" parent="Fiefs/Fief1" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -410, 190 )
+produces = "FOOD"
+
+[node name="TownCore2" parent="Fiefs/Fief1" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -170, -380 )
+produces = "FOOD"
+
+[node name="TownCore3" parent="Fiefs/Fief1" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 180, -180 )
+produces = "LABOR"
+
+[node name="TownCore4" parent="Fiefs/Fief1" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 710, -40 )
+produces = "FAITH"
+
+[node name="TownCore5" parent="Fiefs/Fief1" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -260, 490 )
+
+[node name="TownCore6" parent="Fiefs/Fief1" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 10, 180 )
+produces = "LUMBER"
+
+[node name="TownCore7" parent="Fiefs/Fief1" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 330, 60 )
+produces = "FORESTRY"
 
 [node name="Fief2" parent="Fiefs" instance=ExtResource( 4 )]
 

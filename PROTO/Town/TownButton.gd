@@ -60,7 +60,7 @@ func drop_data(pos,dragged_from):
 	else:
 		dragged_from.set_export(me)
 	
-	dragged_from.set_lane(me.get_pos())
+	dragged_from.set_lane(me.get_global_pos())
 
 ##############################
 
@@ -68,7 +68,7 @@ func drop_data(pos,dragged_from):
 # Process: only runs while dragging a valid object
 func _process(delta):
 	if get_parent().get_parent():
-		var pos = get_node('../../').get_local_mouse_pos()
+		var pos = get_node('../../').get_global_mouse_pos()
 		get_parent().set_lane(pos)
 
 	if not Input.is_mouse_button_pressed(BUTTON_LEFT):

@@ -67,6 +67,8 @@ export (String,\
 	) var produces = "FOOD" setget _set_produces
 
 
+
+
 #############
 #	MEMBERS	#
 
@@ -116,9 +118,11 @@ func is_population_empty():
 #############
 # SETTERS	#
 
+
 func _set_pop_growth_time(value):
 	pop_growth_time = value
 	get_node('PopulationTimer').set_wait_time(pop_growth_time)
+
 
 func _set_population(value):
 	population = max(0,value)
@@ -133,11 +137,13 @@ func _set_population(value):
 			get_node('PopulationTimer').start()
 			print(name+" starts growing population!")
 
+
 func _set_max_pop(value):
 	if max_pop != value:
 		max_pop = value
 		emit_signal('population_changed')
-	
+
+
 func _set_level(value):
 	if value != level:
 		level = value
@@ -147,12 +153,14 @@ func _set_level(value):
 		var Pops = [0,10,30,50,80,100,150]
 		set('max_pop', Pops[level+1])
 
+
 func _set_name(value):
 	if value != name:
 		name = value
 		if has_node('Name'):
 			get_node('Name').set_text(name)
 		emit_signal('name_changed')
+
 
 func _set_produces(value):
 	if value != produces:
@@ -178,12 +186,14 @@ func _set_level_label(value):
 	if has_node('Level'):
 		get_node('Level').set_text(str(value))
 
+
 func _set_button(value):
 	var img_name = 'town_marker_'+str(value)+'.png'
 	var img = load('res://Town/'+img_name)
 	if img:
 		if has_node('Button'):
 			get_node('Button').set_normal_texture(img)
+
 
 func _set_claimant(who):
 	claimant = who
@@ -198,15 +208,16 @@ func _set_claimant(who):
 func add_population(amt):
 	set('population', amt+population)
 
+
 func kill_population(amt):
 	set('population', population-amt)
-
 
 
 func get_producing_resource():
 		var product = get_node('ResourceRef').get(produces)
 		product.owner = self
 		return product
+
 
 func can_produce():
 	# return OK if all requirements are met, or a list of errors if not
@@ -388,19 +399,20 @@ func _ready():
 # Connect the Lane to a position in space
 func set_lane(to_pos):
 	if has_node('TradeLane'):
-		var A = to_pos.angle_to_point(get_pos())
+		var A = to_pos.angle_to_point(get_global_pos())
 		get_node('TradeLane').set_rot(A)
-		var D = get_pos().distance_to( to_pos )
+		var D = get_global_pos().distance_to( to_pos )
 		get_node('TradeLane').set_scale(Vector2(0.5,D/128))
 		get_node('TradeLane/Animator').set_speed(min(1.0, 1.0/(D/30)))
+
 
 # Return the Lane to its proper position
 func reset_lane():
 	if has_node('TradeLane'):
 		if exporting:
-			set_lane(exporting.get_pos())
+			set_lane(exporting.get_global_pos())
 		else:
-			set_lane(get_pos())
+			set_lane(get_global_pos())
 ###########################
 
 
@@ -422,9 +434,11 @@ func _on_resources_changed():
 	if exporting:
 		exporting.check_for_level_change()
 
+
 func _on_level_changed():
 	#if not is_population_full():
 	get_node('PopulationTimer').start()
+
 
 func _on_PopulationTimer_timeout():
 	if is_overpopulated():
