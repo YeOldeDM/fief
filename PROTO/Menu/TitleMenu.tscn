@@ -1,0 +1,183 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Menu/TitleMenu.gd" type="Script" id=1]
+[ext_resource path="res://fonts/DWARVESC.TTF" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 24
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 128
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[node name="TitleMenu" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+
+[node name="box" type="VBoxContainer" parent="."]
+
+anchor/left = 3
+anchor/right = 3
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 178.0
+margin/top = 192.0
+margin/right = -160.0
+margin/bottom = 0.0
+alignment = 1
+
+[node name="NewGame" type="Button" parent="box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 123.0
+margin/right = 338.0
+margin/bottom = 152.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.792969, 0.716571, 0.554459, 1 )
+custom_colors/font_color_hover = Color( 0.878906, 0.654191, 0.391388, 1 )
+custom_colors/font_color_pressed = Color( 0.582031, 0.29336, 0.0386505, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "New Game"
+flat = true
+
+[node name="LoadGame" type="Button" parent="box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 156.0
+margin/right = 338.0
+margin/bottom = 185.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.792969, 0.716571, 0.554459, 1 )
+custom_colors/font_color_hover = Color( 0.878906, 0.654191, 0.391388, 1 )
+custom_colors/font_color_pressed = Color( 0.582031, 0.29336, 0.0386505, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Load Game"
+flat = true
+
+[node name="Options" type="Button" parent="box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 189.0
+margin/right = 338.0
+margin/bottom = 218.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.792969, 0.716571, 0.554459, 1 )
+custom_colors/font_color_hover = Color( 0.878906, 0.654191, 0.391388, 1 )
+custom_colors/font_color_pressed = Color( 0.582031, 0.29336, 0.0386505, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Options"
+flat = true
+
+[node name="Credits" type="Button" parent="box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 222.0
+margin/right = 338.0
+margin/bottom = 251.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.792969, 0.716571, 0.554459, 1 )
+custom_colors/font_color_hover = Color( 0.878906, 0.654191, 0.391388, 1 )
+custom_colors/font_color_pressed = Color( 0.582031, 0.29336, 0.0386505, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Credits"
+flat = true
+
+[node name="Quit" type="Button" parent="box"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 255.0
+margin/right = 338.0
+margin/bottom = 284.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.792969, 0.716571, 0.554459, 1 )
+custom_colors/font_color_hover = Color( 0.878906, 0.654191, 0.391388, 1 )
+custom_colors/font_color_pressed = Color( 0.582031, 0.29336, 0.0386505, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Quit"
+flat = true
+
+[node name="Title" type="Label" parent="."]
+
+anchor/left = 3
+anchor/right = 3
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 178.0
+margin/top = 64.0
+margin/right = -160.0
+margin/bottom = 415.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.878906, 0.766709, 0.573349, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "TITLE"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="box/NewGame" to="." method="_on_NewGame_pressed"]
+
+[connection signal="pressed" from="box/LoadGame" to="." method="_on_LoadGame_pressed"]
+
+[connection signal="pressed" from="box/Options" to="." method="_on_Options_pressed"]
+
+[connection signal="pressed" from="box/Credits" to="." method="_on_Credits_pressed"]
+
+[connection signal="pressed" from="box/Quit" to="." method="_on_Quit_pressed"]
+
+

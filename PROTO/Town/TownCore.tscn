@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://World/Core.gd" type="Script" id=1]
 [ext_resource path="res://lane_bg.png" type="Texture" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Town/town_marker_0.png" type="Texture" id=4]
 [ext_resource path="res://Town/TownButton.gd" type="Script" id=5]
 [ext_resource path="res://resources/metalworks.png" type="Texture" id=6]
-[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Town/ResourceRef.gd" type="Script" id=8]
+[ext_resource path="res://fonts/DWARVESC.TTF" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/Timeless-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Town/ResourceRef.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -23,17 +24,17 @@ tracks/0/keys = { "times":FloatArray( 0, 0.5, 1 ), "transitions":FloatArray( 1, 
 
 [sub_resource type="DynamicFont" id=2]
 
-font/size = 24
+font/size = 42
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]
 
-font/size = 20
+font/size = 30
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 7 )
+font/font = ExtResource( 8 )
 
 [node name="TownCore" type="Position2D"]
 
@@ -41,7 +42,7 @@ visibility/behind_parent = true
 transform/pos = Vector2( 90, 70 )
 script/script = ExtResource( 1 )
 name = "RAND"
-team_color = Color( 1, 1, 1, 1 )
+team_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 level = 0
 produces = "METALWORKS"
 
@@ -97,6 +98,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 4 )
+params/modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
 script/script = ExtResource( 5 )
 
 [node name="Product" type="Sprite" parent="."]
@@ -110,13 +112,13 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = -111.0
-margin/top = -42.0
+margin/top = -61.0
 margin/right = 111.0
-margin/bottom = -17.0
+margin/bottom = -18.0
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 2
+custom_colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_shadow = Color( 0.132813, 0.010376, 0.010376, 1 )
+custom_constants/shadow_as_outline = 1
 text = "RAND"
 align = 1
 percent_visible = 1.0
@@ -129,13 +131,13 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 14.0
-margin/top = -20.0
-margin/right = 46.0
+margin/left = 15.0
+margin/top = -26.0
+margin/right = 47.0
 margin/bottom = 5.0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_shadow = Color( 0.129412, 0.00784314, 0.00784314, 1 )
 custom_constants/shadow_as_outline = 2
 text = "0"
 percent_visible = 1.0
@@ -144,7 +146,7 @@ max_lines_visible = -1
 
 [node name="ResourceRef" type="Node" parent="."]
 
-script/script = ExtResource( 8 )
+script/script = ExtResource( 9 )
 
 [node name="PopulationTimer" type="Timer" parent="."]
 

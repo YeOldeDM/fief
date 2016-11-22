@@ -1,9 +1,14 @@
 
 extends Control
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
+signal name_changed(who)
+
+export(String) var name = "This Land" setget _set_name
+
+func _set_name(what):
+	if what != name:
+		name = what
+		emit_signal('name_changed',self)
 
 func _ready():
 	var first_town = get_node('Fiefs/Fief/TownCore4')

@@ -15,7 +15,7 @@ const LABOR = 'labor.png'
 const FORESTRY = 'forestry.png'
 const FAITH = 'faith.png'
 const STONE = 'stone.png'
-const ORE = 'ore.png'
+const ORE = 'mine.png'
 const LUMBER = 'lumber.png'
 const MASONRY = 'masonry.png'
 const METALWORKS = 'metalworks.png'
@@ -43,6 +43,7 @@ signal population_empty()
 signal import_changed()
 signal export_changed()
 
+signal claimant_changed()
 
 
 
@@ -55,7 +56,7 @@ signal export_changed()
 export (String) var name = "RAND" setget _set_name
 
 # Team Color (testing)
-export (Color, RGB) var team_color = Color(1,1,1) setget _set_team_color
+export (Color, RGB) var team_color = Color(0.5,0.5,0.5) setget _set_team_color
 
 # Town Level
 export (int, -1, 5) var level = 0 setget _set_level
@@ -184,6 +185,8 @@ func _set_team_color(color):
 
 func _set_level_label(value):
 	if has_node('Level'):
+		if value < 0:
+			value = "u"
 		get_node('Level').set_text(str(value))
 
 
@@ -198,6 +201,7 @@ func _set_button(value):
 func _set_claimant(who):
 	claimant = who
 	set('team_color', claimant.player_color)
+	emit_signal("claimant_changed")
 ################
 
 

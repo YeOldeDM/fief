@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fief/Fief.gd" type="Script" id=1]
 [ext_resource path="res://Fief/marker.png" type="Texture" id=2]
-[ext_resource path="res://fonts/Knights Quest.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/DWARVESC.TTF" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 

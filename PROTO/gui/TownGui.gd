@@ -45,7 +45,7 @@ func _set_town(value):
 		town.disconnect("population_changed", self, "_on_town_population_changed")
 		town.disconnect("import_changed", self, "_on_town_import_changed")
 		town.disconnect("export_changed", self, "_on_town_export_changed")
-	
+		town.disconnect("claimant_changed", self, "_on_town_claimant_changed")
 	# break if no new town
 	if value == null:
 		return
@@ -61,7 +61,7 @@ func _set_town(value):
 	town.connect("population_changed", self, "_on_town_population_changed")
 	town.connect("import_changed", self, "_on_town_import_changed")
 	town.connect("export_changed", self, "_on_town_export_changed")
-	
+	town.connect("claimant_changed", self, "_on_town_claimant_changed")
 	# update everything
 	update_info()
 
@@ -72,6 +72,8 @@ func _set_town(value):
 
 #####################
 # SIGNAL CALLBACKS	#
+
+# REMOTE SIGNALS
 func _on_town_name_changed():
 	get_node('Name/NameLabel').set_text(town.name)
 
@@ -107,6 +109,17 @@ func _on_town_export_changed():
 	get_node('exports').set_text("Exporting to: "+export_txt)
 	draw_needed_resources()
 
+func _on_town_claimant_changed():
+	var text = "Unclaimed" # if claimant is null
+	var color = Color(0.5,0.5,0.5)
+	if town.claimant:
+		text = "Claimed by "+town.claimant.player_name
+		color = town.claimant.player_color
+	get_node('claimant').set_text(text)
+	get_node('claimant').set('custom_colors/font_color', color)
+
+
+# LOCAL SIGNALS
 func _on_RenameButton_pressed():
 	assert town != null
 	if get_node('Name/NameLabel/NameEdit').is_hidden():
@@ -231,6 +244,15 @@ func update_info():
 	var pop = str(town.population*0.1).pad_decimals(1)
 	var maxpop = str(town.max_pop*0.1).pad_decimals(1)
 	get_node('population').set_text('Pop.: '+pop+'/'+maxpop)
+	
+	# draw claimant info
+	var text = "Unclaimed" # if claimant is null
+	var color = Color(0.5,0.5,0.5)
+	if town.claimant:
+		text = "Claimed by "+town.claimant.player_name
+		color = town.claimant.player_color
+	get_node('claimant').set_text(text)
+	get_node('claimant').set('custom_colors/font_color', color)
 	
 	# draw resource grids
 	draw_available_resources()
